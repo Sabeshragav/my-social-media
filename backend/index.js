@@ -15,6 +15,11 @@ main().catch((err) => console.error(err));
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
 
+  //Server online
+  app.get("/", (req, res) => {
+    res.send("Server Online");
+  });
+
   //fetching all posts
   app.get("/posts", async (req, res, next) => {
     try {
