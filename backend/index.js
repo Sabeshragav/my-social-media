@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: ["https://my-social-media-app-eta.vercel.app"],
+    origin: [FRONTEND_URL],
     methods: ["POST", "GET"],
     credentials: true,
   })
@@ -19,10 +19,7 @@ app.use(express.json());
 main().catch((err) => console.error(err));
 
 async function main() {
-  // await mongoose.connect(process.env.MONGO_URL);
-  await mongoose.connect(
-    "mongodb+srv://sabeshragav289:4YTPYt3jlKI5WXon@cluster0.g77wa.mongodb.net/social_media?retryWrites=true&w=majority"
-  );
+  await mongoose.connect(process.env.MONGO_URL);
 
   //Server online
   app.get("/", (req, res, next) => {
