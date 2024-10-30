@@ -25,8 +25,9 @@ async function main() {
   );
 
   //Server online
-  app.get("/", (req, res) => {
+  app.get("/", (req, res, next) => {
     res.json("Server Online");
+    next();
   });
 
   //fetching all posts
