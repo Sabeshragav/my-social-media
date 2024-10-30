@@ -75,8 +75,9 @@ async function main() {
     next();
   });
 
-  app.listen(PORT, (err) => {
-    if (err) console.error(err.message);
-    console.log(`Server running on port ${PORT}`);
-  });
+  // app.listen(PORT, (err) => {
+  //   if (err) console.error(err.message);
+  //   console.log(`Server running on port ${PORT}`);
+  // });
 }
+module.exports = app;
