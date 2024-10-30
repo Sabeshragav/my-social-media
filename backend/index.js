@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://my-social-media-app-eta.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
