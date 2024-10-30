@@ -14,6 +14,9 @@ main().catch((err) => console.error(err));
 
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(
+    "mongodb+srv://sabeshragav289:4YTPYt3jlKI5WXon@cluster0.g77wa.mongodb.net/social_media?retryWrites=true&w=majority"
+  );
 
   //Server online
   app.get("/", (req, res) => {
