@@ -7,7 +7,8 @@ const About = () => {
           ABOUT US
         </h2>
         <p className="text-lg text-center">
-          This is a small social media app developed using React and Tailwindcss
+          This is a small social media app developed using Tailwindcss and MERN
+          stack
         </p>
         <p role="button" className="text-lg text-blue-800 underline">
           Subscribe US
