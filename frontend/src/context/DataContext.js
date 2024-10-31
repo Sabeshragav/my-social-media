@@ -86,6 +86,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const handleEdit = async (e, id) => {
+    setPostLoading(true);
     e.preventDefault();
     const newDatetime = format(new Date(), "MMMM dd ,yyyy p");
     const updatePost = {
@@ -98,6 +99,7 @@ export const DataProvider = ({ children }) => {
       setPosts(
         getPosts.map((post) => (post._id === id ? { ...response.data } : post))
       );
+      setPostLoading(false);
       setEditBody("");
       setEditTitle("");
       navigate("/");

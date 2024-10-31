@@ -36,10 +36,7 @@ const NewPost = () => {
               Post
             </button>
           ) : (
-            <div
-              className="btn mt-5 flex justify-center items-center gap-2"
-              type="submit"
-            >
+            <div className="btn mt-5 flex justify-center items-center gap-2">
               Posting Please Wait
               <IoMdSync className="h-8 w-8 animate-spin" />
             </div>

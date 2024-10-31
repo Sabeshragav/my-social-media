@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import DataContext from "./context/DataContext";
+import { IoMdSync } from "react-icons/io";
 
 const Edit = () => {
-  const { handleEdit, setEditTitle, setEditBody, getEditTitle, getEditBody } =
-    useContext(DataContext);
+  const {
+    handleEdit,
+    setEditTitle,
+    setEditBody,
+    getEditTitle,
+    getEditBody,
+    postLoading,
+  } = useContext(DataContext);
   const id = useParams().id;
 
   return (
@@ -35,9 +42,16 @@ const Edit = () => {
             value={getEditBody}
             onChange={(e) => setEditBody(e.target.value)}
           />
-          <button className="btn mt-5" type="submit">
-            Edit
-          </button>
+          {!postLoading ? (
+            <button className="btn mt-5" type="submit">
+              Edit
+            </button>
+          ) : (
+            <button className="btn mt-5 flex justify-center items-center gap-2">
+              Editing Please Wait
+              <IoMdSync className="h-8 w-8 animate-spin" />
+            </button>
+          )}
         </div>
       </form>
     </div>
