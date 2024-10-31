@@ -47,10 +47,10 @@ const Edit = () => {
               Edit
             </button>
           ) : (
-            <button className="btn mt-5 flex justify-center items-center gap-2">
+            <div className="btn mt-5 flex justify-center items-center gap-2">
               Editing Please Wait
               <IoMdSync className="h-8 w-8 animate-spin" />
-            </button>
+            </div>
           )}
         </div>
       </form>
