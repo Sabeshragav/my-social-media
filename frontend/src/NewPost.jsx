@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import DataContext from "./context/DataContext";
+import { IoMdSync } from "react-icons/io";
 
 const NewPost = () => {
-  const { handleAddPost, setTitle, setBody, getTitle, getBody } =
+  const { handleAddPost, setTitle, setBody, getTitle, getBody, postLoading } =
     useContext(DataContext);
   return (
     <div className="p-3 h-[31rem]">
@@ -30,9 +31,19 @@ const NewPost = () => {
             value={getBody}
             onChange={(e) => setBody(e.target.value)}
           />
-          <button className="btn mt-5" type="submit">
-            Post
-          </button>
+          {!postLoading ? (
+            <button className="btn mt-5" type="submit">
+              Post
+            </button>
+          ) : (
+            <div
+              className="btn mt-5 flex justify-center items-center gap-2"
+              type="submit"
+            >
+              Posting Please Wait
+              <IoMdSync className="h-8 w-8 animate-spin" />
+            </div>
+          )}
         </div>
       </form>
     </div>

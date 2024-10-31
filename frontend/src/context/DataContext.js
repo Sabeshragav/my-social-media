@@ -19,6 +19,7 @@ export const DataProvider = ({ children }) => {
   const navigate = useNavigate();
   const getBatteryState = useBattery();
   const [getError, setError] = useState(null);
+  const [postLoading, setPostLoading] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -55,6 +56,7 @@ export const DataProvider = ({ children }) => {
       e.preventDefault();
       setIsPost(true);
       if (getTitle.trim().length && getBody.trim().length) {
+        setPostLoading(true);
         const newDatetime = format(new Date(), "MMMM dd ,yyyy p");
 
         const newPost = {
@@ -64,13 +66,13 @@ export const DataProvider = ({ children }) => {
         };
 
         const response = await api.post("/posts", newPost);
-
         const changePosts = [...getPosts, response.data];
         setPosts(changePosts);
+        setPostLoading(false);
       }
+      navigate("/");
       setTitle("");
       setBody("");
-      navigate("/");
     } catch (error) {
       if (error.response) {
         // Not in the 200 response range
@@ -109,9 +111,8 @@ export const DataProvider = ({ children }) => {
       e.preventDefault();
       const updatedPosts = getPosts.filter((post) => post._id !== id);
       setPosts(updatedPosts);
-
-      await api.delete(`/posts/${id}`);
       navigate("/");
+      await api.delete(`/posts/${id}`);
     } catch (error) {
       console.log(error.message);
     }
@@ -138,6 +139,7 @@ export const DataProvider = ({ children }) => {
         handleAddPost,
         handleDelete,
         handleEdit,
+        postLoading,
       }}
     >
       {children}
