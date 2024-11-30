@@ -9,7 +9,14 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: (origin, callback) => {
+      if (origin === process.env.CLIENT_URL) {
+        callback(null, true);
+      } else {
+        console.error("Blocked Origin:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true,
   })
